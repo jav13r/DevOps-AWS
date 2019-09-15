@@ -5,14 +5,9 @@ const config = new pulumi.Config("aws")
 const env = pulumi.getStack();
 
 const sqs = require("./scripts/sqs.js")(env, config)
+const dynamo = require("./scripts/dynamo.js")(env, config)
 
 module.exports = {
-    sqs
+    sqs,
+    dynamo,
 }
-
-
-// Create an AWS resource (S3 Bucket)
-//const bucket = new aws.s3.Bucket("my-bucket");
-
-// Export the name of the bucket
-//exports.bucketName = bucket.id;
